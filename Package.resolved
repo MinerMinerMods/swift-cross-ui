@@ -1,5 +1,5 @@
 {
-  "originHash" : "5d45a941f51bf318ad84034fcee5a2466004d545cb3be271c8fcedd0cf2d2060",
+  "originHash" : "b048e681500b5ef3a42c5cf053974a87287319dd33a5ee5d05917fc673ea3f9a",
   "pins" : [
     {
       "identity" : "jpeg",
@@ -87,8 +87,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/swiftlang/swift-testing.git",
       "state" : {
-        "revision" : "18c42c19cac3fafd61cab1156d4088664b7424ae",
-        "version" : "6.0.3"
+        "revision" : "399f76dcd91e4c688ca2301fa24a8cc6d9927211",
+        "version" : "0.99.0"
       }
     },
     {

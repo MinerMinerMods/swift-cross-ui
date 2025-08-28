@@ -164,27 +164,20 @@ struct BackendTests {
         }
 
         /// Helper function to be used in future tests
-        #if swift(>= 6.0)
         @MainActor
-        static func snapshotView( _ view: NSView
-        ) throws(BackendTestError) -> Data
-        #else 
-        @MainActor
-        static func snapshotView( _ view: NSView
-        ) throws -> Data
-        #endif
+        static func snapshotView(_ view: NSView) throws -> Data
         {
             view.wantsLayer = true
             view.layer?.backgroundColor = CGColor.white
 
             guard let bitmap = view.bitmapImageRepForCachingDisplay(in: view.bounds) else {
-                throw .failedBitmapBack
+                throw BackendTestError.failedBitmapBack
             }
 
             view.cacheDisplay(in: view.bounds, to: bitmap)
 
             guard let data = bitmap.tiffRepresentation else {
-                throw .failedTiffRep
+                throw BackendTestError.failedTiffRep
             }
 
             return data

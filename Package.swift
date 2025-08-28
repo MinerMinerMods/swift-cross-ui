@@ -92,7 +92,7 @@ let package = Package(
         ),
         .package(
             url: "https://github.com/swiftlang/swift-testing.git",
-            Version(5,10,0)..<Version(6,1,0)
+            from: "0.10.0"
         ),
         .package(
             url: "https://github.com/stackotter/swift-macro-toolkit",

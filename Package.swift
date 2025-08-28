@@ -91,6 +91,10 @@ let package = Package(
             from: "600.0.0"
         ),
         .package(
+            url: "https://github.com/swiftlang/swift-testing.git",
+            Version(5,10,0)..<Version(6,1,0)
+        ),
+        .package(
             url: "https://github.com/stackotter/swift-macro-toolkit",
             .upToNextMinor(from: "0.6.0")
         ),

@@ -164,14 +164,16 @@ struct BackendTests {
         }
 
         /// Helper function to be used in future tests
+        #if swift(>= 6.0)
         @MainActor
-        static func snapshotView( _ view: NSView )
-    #if swift(>= 6.0)
-        throws(BackendTestError)
-    #else
-        throws
-    #endif
-        -> Data {
+        static func snapshotView( _ view: NSView
+        ) throws(BackendTestError) -> Data
+        #else 
+        @MainActor
+        static func snapshotView( _ view: NSView
+        ) throws -> Data
+        #endif
+        {
             view.wantsLayer = true
             view.layer?.backgroundColor = CGColor.white
 

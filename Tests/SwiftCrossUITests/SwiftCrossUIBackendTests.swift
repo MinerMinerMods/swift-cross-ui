@@ -118,7 +118,7 @@ struct BackendTests {
         )
     }
 
-    #if canImport(AppKitBackend)
+#if canImport(AppKitBackend)
 
         @Test(
             "A Basic Layout Works properly",
@@ -165,11 +165,13 @@ struct BackendTests {
 
         /// Helper function to be used in future tests
         @MainActor
-        #if swift(>= 6.0)
-        static func snapshotView(_ view: NSView) throws(BackendTestError) -> Data {
-        #else
-        static func snapshotView(_ view: NSView) throws -> Data {
-        #endif
+        static func snapshotView( _ view: NSView )
+    #if swift(>= 6.0)
+        throws(BackendTestError)
+    #else
+        throws
+    #endif
+        -> Data {
             view.wantsLayer = true
             view.layer?.backgroundColor = CGColor.white
 
@@ -185,5 +187,5 @@ struct BackendTests {
 
             return data
         }
-    #endif
+#endif
 }

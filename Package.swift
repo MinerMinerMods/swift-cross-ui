@@ -90,10 +90,12 @@ let package = Package(
             url: "https://github.com/swiftlang/swift-syntax.git",
             from: "600.0.0"
         ),
+        #if swift(<6.0)
         .package(
             url: "https://github.com/swiftlang/swift-testing.git",
-            Version(5,10,0)..<Version(6,1,0)
+            Version(510,0,0)..<Version(610,0,0)
         ),
+        #endif
         .package(
             url: "https://github.com/stackotter/swift-macro-toolkit",
             .upToNextMinor(from: "0.6.0")
@@ -153,7 +155,9 @@ let package = Package(
                 "SwiftCrossUI",
                 .target(name: "AppKitBackend", condition: .when(platforms: [.macOS])),
                 .target(name: "DefaultBackend"),
+                #if swift(<6.0)
                 .product(name: "Testing", package: "swift-testing"),
+                #endif
             ]
         ),
         .target(
